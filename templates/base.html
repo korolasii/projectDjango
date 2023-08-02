@@ -1,0 +1,47 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+<body>
+    <div class="page">
+        <div class="header">
+            <div class="logo">
+                <div class="textLogo">
+                    Dota shop
+                </div>
+            </div>
+            <div class="navigation">
+                <div class="home_nav">
+                    Головна
+                </div>
+                <div class="shop_nav">
+                    Магазин
+                </div>
+            </div>
+            <div class="blog">
+                <div class="shop_bag">
+                    <img src="{% static 'media/shoppingBagWhite.png' %}">
+                </div>
+                <div class="name">
+                    Name
+                </div>
+                <div class="imgProfile">
+                    <img src="{% static 'media/mainPhoto.jpg' %} ">
+                </div>
+            </div>
+        </div>
+
+        {% block content %}{% endblock content %}
+
+        <div class="footer">
+            @2023
+        </div>
+    </div>
+</body>
+</html>

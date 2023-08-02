@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class TpConfig(AppConfig):
+class HomeConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'tp'
+    name = 'apps.home'
