@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'apps.core.apps.MagazinConfig',
-    'apps.home.apps.HomeConfig'
+    'apps.home.apps.HomeConfig',
+    'apps.members.apps.MembersConfig',
 ]
 
 MIDDLEWARE = [
@@ -134,4 +135,18 @@ MEDIA_ROOT = BASE_DIR / 'media/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
+
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'height': 300,
+        'width': 1200
+    },
+}
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL='members.UserProfile'

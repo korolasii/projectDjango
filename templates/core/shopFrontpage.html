@@ -1,0 +1,84 @@
+{% extends 'base.html'%}
+
+{% load static %}
+
+{% block content %}
+    <div class="content">
+        <div class="blockOur">
+            <div class="magazin">
+                {% for product in products %}
+                    <div class="cart">
+                        <div class="cartImg">
+                            <img src="{{ product.image.url }}">
+                        </div>
+                        <div class="cartText">
+                            <div class="nameItemCart">
+                                {{ product.name_item }}
+                            </div>
+                            <div class="bodyItemCart">
+                                <div class="leftBodyCart">
+                                    <p>
+                                        {{ product.heros }}
+                                    </p>
+                                    <p>
+                                        {{ product.raritys }}
+                                    </p>
+                                </div>
+                                <div class="rightBodyCart">
+                                    <p>
+                                        {{ product.cells }}
+                                    </p>
+                                    <p>
+                                        {{ product.price }} грн
+                                    </p>
+                                </div>
+                            </div>
+                            {% if user.is_authenticated and user == product.author %}
+                                <div class="moreCRUD">
+                                    <a href="{% url 'product_update' product.slug %}" class="uppdate">
+                                        <div class="uppdateBlock">
+                                            Оновити
+                                        </div>
+                                    </a>
+                                    <a href="{% url 'details' product.slug %}" class="datail">
+                                        <div class="datailBlock">
+                                            Детальніше 
+                                        </div>
+                                    </a>
+                                    <a href="{% url 'product_delete' product.slug %}" class="delete">
+                                        <div class="deleteBlock">
+                                            Видалити
+                                        </div>
+                                    </a>
+                                </div>
+                            {% else %}
+                                <a href="{% url 'details' product.slug %}" class="datail">
+                                    <div class="btnDatail">
+                                        Детальніше 
+                                    </div>
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="searchBlock">
+                <div class="searchContent">
+                    <div class="searchContentHeader">
+                        Пошук
+                    </div>
+                    <div class="searchContentBody">
+                        <form role="search" method="get" action="{% url 'search' %}">
+                            <input type="search" id="autocomplete"  placeholder="Search..." class="inputSearch" aria-label="Search" name='query'>
+                        </form>
+                        <a href="{% url 'create' %}">
+                            <div class="btnCreate">
+                                Створити
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

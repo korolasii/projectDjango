@@ -1,0 +1,77 @@
+{% extends 'base.html'%}
+
+{% load static %}
+
+{% block content %}
+    <div class="content">
+        <div class="all">
+            <div class="cartBlock">
+                <div class="cartImages">
+                    <img src="{{product.image.url}}" class="imgCart">
+                </div>
+                <div class="textCart">
+                    <div class="nameItemProduct">
+                        {{ product.name_item }}
+                    </div>
+                    <div class="herosProduct">
+                        Герой -- {{ product.heros }}
+                    </div>
+                    <div class="raritysProduct">
+                        Рідкість -- {{ product.raritys }}
+                    </div>
+                    <div class="cellsProduct">
+                        Слот -- {{ product.cells }}
+                    </div>
+                    <div class="InBag">
+                        <div class="informationForm">
+                            <div class="priceProduct">
+                                {{ product.price }} грн
+                            </div>
+                            <div class="quantityProduct">
+                                {{ product.quantity }} шт.
+                            </div>
+                        </div>
+                        {% if product.quantity %}
+                            {% if user.is_authenticated %}
+                                <form method="get">
+                                    <input type="hidden" name="product" value="{{ product.id }}">
+                                    <div class="input-group mb-3">
+                                        <input type="number" min="1" step="1" max="{{ product.quantity }}" value="1" class="quantityInput" name="quantity">
+                                        <button class="btnInBag" type="submit" id="button-addon1"> 
+                                            Купити
+                                        </button>
+                                    </div>
+                                </form>
+                                {% else %}
+                                    <div class="haven`tAcaunt">
+                                        Робити покупки можуть тільки зареєстровані користувачі
+                                    </div>
+                            {% endif %}
+                        {% else %}
+                            <div class="endProduct">
+                                Товар закінчився
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="commentBlock">
+                <form method="post">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <input class="btnInBag" type="submit" value="Додати коментар">
+                </form>
+            
+                {% for comment in product.comments.all %}
+                    <div class="coment">
+                        <p>{{comment.content}}</p>
+                        <p><strong>Ім'я:</strong> {{comment.name}}</p>
+                        <p><strong>Дата публикації:</strong> {{comment.created_at}}</p>
+                    </div>
+                {% empty %}
+                    <p>Коментарів немає</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

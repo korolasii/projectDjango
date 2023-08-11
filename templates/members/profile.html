@@ -1,0 +1,45 @@
+{% extends 'base.html'%}
+
+{% load static %}
+
+{% block content %}
+    <div class="content">
+        <div class="conteinerProfile">
+            <div class="contentConteinerProfile">
+              <div class="imgConteinerProfile">
+                  {% if user.image %}
+                    <img src="{{user.image.url}}">
+                  {% else %}
+                    <img src="{% static 'media/tmb.png' %}">
+                  {% endif %}
+              </div>
+              <div class="nameConteinerProfile">
+                {{ user.username }}
+              </div>
+            </div>
+            <div class="textConteinerProfile">
+              <div class="table">
+                <div class="fullName">
+                  {{ request.user.get_full_name }}
+                </div>
+                <hr>
+                <div class="emeil">
+                  {{ request.user.email }}
+                </div>
+                <hr>
+                <a class="btnUpdate" href="{% url 'profile_edit' %}">
+                  <div class="conteinerBtnUpdate">
+                      Редагувати
+                  </div>
+                </a>
+                <hr>
+                <a class="btnLogout" href="{% url 'logout' %}">
+                  <div class="conteinerBtnLogout">
+                      Log out
+                  </div>
+                </a>
+              </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

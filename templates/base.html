@@ -7,6 +7,488 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html{
+            scroll-behavior: smooth;
+        }
+
+        label{
+            display: block;
+        }
+
+        li{
+            list-style-type: none;
+            margin-left: 10px;
+        }
+
+        input{
+            border-radius: 14px;
+            background-color: #BDFF00;
+            text-align: center;
+        }
+
+        .page{
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .header{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            color: white;
+            padding: 20px;
+            display: flex;
+            height: 152px;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #242222;
+        }
+
+        .logo, .blog, .navigation{
+            width: 33%;
+        }
+
+        .textLogo{
+            font-size: 96px;
+        }
+
+        .navigation{
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        .navigation a{
+            color: white;
+            text-decoration: none;
+        }
+
+        .home_nav, .shop_nav{
+            font-size: 48px;
+        }
+
+        .blog{
+            display: flex;
+            align-items: center;
+            justify-content: end;
+        }
+
+        .blog a{
+            display: inline-block;
+            text-decoration: none;
+            color: #242222;
+        }
+
+        .login{
+            margin-left: 30%;
+            margin-right: 20px;
+        }
+
+        .loginBtn, .signUpBtn{
+            width: 148px;
+            height: 45px;
+            background-color: #BDFF00;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 14px;
+        }
+
+        .shop_bag{
+            display: inline-block;
+            overflow: hidden;
+            height: 58px;
+            margin-right: 45px;
+        }
+
+        .shop_bag_img{
+            height: 58px;
+        }
+
+        .name{
+            display: inline-block;
+            font-size: 48px;
+            margin-right: 45px;
+        }
+
+        .imgProfile{
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .content{
+            margin-top: 152px;
+            flex: 1 1 auto;
+            background-color: #1C1E16;
+            display: flex;
+            align-items: center;
+        }
+        
+        .blockAbout{
+            background-color: #242222;
+            width: 70%;
+            margin: 75px auto;
+            color: white;
+        }
+
+        .imgBlockAbout{
+            width: 100%;
+            user-select: none;
+        }
+
+        .mainPage{
+            width: 100%;
+        }
+        
+        .textBlock{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 10px;
+            font-size: 40px;
+        }
+
+        .headerTextBlock{
+            font-size: 96px;
+        }
+
+        .blockOur{
+            width: 90%;
+            margin: 75px auto;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .magazin{
+            width: 80%;
+            background-color: #242222;
+            border-radius: 14px;
+            padding: 20px 30px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 30px;
+
+        }
+
+        .cart{
+            overflow: hidden;
+            border-radius: 14px;
+        }
+
+        .cartImg{
+            height: 300px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cartImg img{
+            height: 100%;
+            width: 100%;
+        }
+        
+        .cartText{
+            background-color: #BDFF00;
+            padding: 10px 14px;
+        }
+
+        .nameItemCart{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+        }
+
+        .bodyItemCart{
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            font-size: 13px;
+        }
+
+        .leftBodyCart, .rightBodyCart{
+            display: flex;
+            flex-direction: column;
+        }
+
+        .datail, .delete, .uppdate{
+            margin: 0 auto;
+            margin-top: 10px;
+            width: 30%;
+            background-color: #242222;
+            font-size: 11px;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 14px;
+            padding: 10px 0;
+            cursor: pointer;
+        }
+
+        .moreCRUD{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .uppdate, .delete{
+            color: white;
+            text-decoration: none;
+        }
+
+        .searchBlock{
+            width: 15%;
+        }
+
+        .searchContent{
+            position: sticky;
+            top: 227px;
+            padding: 10px 0;
+            width: 100%;
+            background-color: #242222;
+            border-radius: 14px;
+            color: white;
+        }
+
+        .searchContentHeader{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .searchContentBody{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .inputSearch{
+            padding: 3px 0;
+        }
+
+        .btnCreate{
+            background-color: #BDFF00;
+            color: #242222;
+            width: 173px;
+            margin-top: 15px;
+            padding: 3px 0;
+            border-radius: 14px;
+            text-align: center;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .conteinerRegister{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 1 1 auto;
+            background-color: #1C1E16;
+            padding-top: 152px;
+        }
+
+        .contentInConteiner{
+            border-radius: 14px;
+            background-color: #242222;
+            padding: 20px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .conteinerBtnReq{
+            margin-top: 10px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .btnReq{
+            padding: 5px;
+            background-color: #BDFF00;
+            width: 100px;
+        }
+
+        .conteinerProfile{
+            background-color: #242222;
+            margin: 0 auto;
+            display: flex;
+            color: white;
+            padding: 30px;
+        }
+
+        .contentConteinerProfile{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .imgConteinerProfile{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nameConteinerProfile{
+            margin-top: 15px;
+            font-size: 40px;
+        }
+
+        .textConteinerProfile{
+            margin-left: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .table{
+            margin-left: 20px;
+            font-size: 25px;
+        }
+
+        .fullName, .emeil, .conteinerBtnUpdate, .conteinerBtnLogout{
+            margin-bottom: 10px;
+        }
+
+        .emeil, .conteinerBtnUpdate, .conteinerBtnLogout{
+            margin-top: 10px;
+        }
+
+        .conteinerBtnUpdate, .conteinerBtnLogout{
+            background-color: #BDFF00;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 14px;
+            padding: 5px 0 5px 0;
+        }
+
+        .btnUpdate, .btnLogout{
+            text-decoration: none;
+        }
+
+        .conteinerBtnUpdate, .conteinerBtnLogout{
+            color: #242222;
+            cursor: pointer;
+        }
+
+        .all{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cartBlock{
+            background-color: #242222;
+            margin: 0 auto;
+            border-radius: 14px;
+            display: flex;
+            overflow: hidden;
+            color: white;
+        }
+
+        .textCart{
+            padding: 30px 15px 0 15px;
+            font-size: 19px;
+        }
+
+        .nameItemProduct{
+            font-size: 30px;
+        }
+
+        .informationForm{
+            margin-top: 20px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .priceProduct{
+            font-size: 20px;
+        }
+
+        .quantityInput{
+            height: 25px;
+            width: 100px;
+            border-radius: 14px;
+            margin-right: 0;
+        }
+
+        .btnInBag{
+            border-radius: 14px;
+            padding: 3px;
+            margin-left: 0;
+            background-color: #BDFF00;
+        }
+
+        .commentBlock{
+            background-color: #242222;
+            margin: 0 auto;
+            margin-top: 50px;
+            border-radius: 14px;
+            min-width: 917px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            padding: 10px 10px 10px 10px;
+        }
+
+        .coment{
+            margin-top: 30px;
+            background-color: #1C1E16;
+            border-radius: 14px;
+            padding: 10px;
+        }
+
+        .footer{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 0;
+            color: rgb(103 98 98 / 30%);
+            background-color: #1C1E16;
+            font-size: 20px;
+        }
+
+    </style>
 </head>
 <body>
     <div class="page">
@@ -18,22 +500,42 @@
             </div>
             <div class="navigation">
                 <div class="home_nav">
-                    Головна
+                    <a href="{% url 'index' %}">
+                        Головна
+                    </a>
                 </div>
                 <div class="shop_nav">
-                    Магазин
+                    <a href="{% url 'shop' %}">
+                        Магазин
+                    </a>
                 </div>
             </div>
             <div class="blog">
-                <div class="shop_bag">
-                    <img src="{% static 'media/shoppingBagWhite.png' %}">
-                </div>
-                <div class="name">
-                    Name
-                </div>
-                <div class="imgProfile">
-                    <img src="{% static 'media/mainPhoto.jpg' %} ">
-                </div>
+                {% if user.is_authenticated %}
+                    <div class="name">
+                        {{user.username}}
+                    </div>
+                    <div class="imgProfile">
+                        <a href="{% url 'profile' %}">
+                            {% if user.image %}
+                              <img src="{{user.image.url}}">
+                            {% else %}
+                              <img src="{% static 'media/tmb.png' %}">
+                            {% endif %}
+                        </a>
+                    </div>
+                {% else %}
+                    <a href="{% url 'login' %}" class="login">
+                        <div class="loginBtn">
+                            Login
+                        </div> 
+                    </a>
+                    <a href="{% url 'signup' %}" class="signUp">
+                        <div class="signUpBtn">
+                            Sign-up
+                        </div> 
+                    </a>
+                {% endif %}
             </div>
         </div>
 
