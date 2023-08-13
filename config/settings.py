@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'apps.home.apps.HomeConfig',
     'apps.members.apps.MembersConfig',
     'apps.blog.apps.BlogConfig',
-    # 'apps.order.apps.OrderConfig',
+    'apps.order.apps.OrderConfig',
     'ckeditor',
 ]
 

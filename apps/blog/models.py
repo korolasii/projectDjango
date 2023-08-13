@@ -2,6 +2,7 @@ from django.db import models
 from ckeditor.fields import RichTextField
 from django.contrib.auth import get_user_model
 from django.utils.text import slugify
+import uuid
 
 
 # Create your models here.
@@ -31,7 +32,7 @@ class Article(models.Model):
         return f'{self.title}'
     
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.title)
+        self.slug = str(uuid.uuid4())
         super().save(*args, **kwargs)
     
     class Meta:

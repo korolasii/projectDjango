@@ -42,7 +42,7 @@ def create_blog(request):
             article = form.save(commit=False)
             article.author = request.user
             article.save()
-            return redirect('blog', slug=article.slug)
+            return redirect('details_blog', slug=article.slug)
     else:
         form = ArticleForm()
     return render(request, 'blog/create.html', {'form': form, 'title': "Створення статті"})
