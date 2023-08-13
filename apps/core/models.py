@@ -74,8 +74,8 @@ class Games(models.Model):
         super().save(*args, **kwargs)
     
     class Meta:
-        verbose_name = 'Статья'
-        verbose_name_plural = 'Статьи'
+        verbose_name = 'Товар'
+        verbose_name_plural = 'Товари'
         ordering = ['-created_at']
  
     

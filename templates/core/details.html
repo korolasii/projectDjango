@@ -33,7 +33,7 @@
                         </div>
                         {% if product.quantity %}
                             {% if user.is_authenticated %}
-                                <form method="get">
+                                <form action="" method="get">
                                     <input type="hidden" name="product" value="{{ product.id }}">
                                     <div class="input-group mb-3">
                                         <input type="number" min="1" step="1" max="{{ product.quantity }}" value="1" class="quantityInput" name="quantity">

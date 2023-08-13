@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="content">
+        <div class="contentFormCreateBlog">
+            <h1 class="titleBlogCreate">{{title}}</h1>
+            <form method='POST' enctype='multipart/form-data' class="formCreateBlog">
+                {% csrf_token %}
+                {{form.media}}
+                {{form.as_p}}
+                <div class="btnCreateBlogConteiner">
+                    <button class='btnCreate' type='submit'>Create</button>
+                </div>
+        </div>
+    </div>
+{% endblock %}

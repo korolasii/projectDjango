@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Dota shop</title>
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
     <style>
         *{
@@ -71,7 +71,7 @@
             text-decoration: none;
         }
 
-        .home_nav, .shop_nav{
+        .home_nav, .shop_nav, .blog_nav{
             font-size: 48px;
         }
 
@@ -477,6 +477,121 @@
             padding: 10px;
         }
 
+        .blogconteiner{
+            width: 90%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .contentBlog{
+            border-radius: 14px;
+            padding: 20px;
+            width: 80%;
+            background-color: #242222;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 20px;
+        }
+
+        .cartBlog{
+            height: 500px;
+            overflow: hidden;
+            border-radius: 14px;
+        }
+
+        .imgCartBlog{
+            max-height: 300px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .imgCartBlog img{
+            width: 100%;
+        }
+
+        .textCartBlog{
+            background-color: #BDFF00;
+            border-radius: 0 0 14px 14px;
+            padding: 10px;
+        }
+
+        .contentFormCreateBlog{
+            background-color: #242222;
+            width: 90%;
+            border-radius: 14px;
+            margin: 30px auto;
+            color: white;
+            padding: 30px;
+        }
+
+        .titleBlogCreate{
+            text-align: center;
+        }
+
+        .formCreateBlog p{
+            margin-top: 10px;
+        }
+
+        .btnCreateBlogConteiner{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .conteinerBlogDatail{
+            width: 70%;
+            margin: 0 auto;
+        }
+
+        .imgCartDatail{
+            max-height: 1000px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cartBlogDatail{
+            width: 100%;
+            background-color: #242222;
+            border-radius: 14px;
+            overflow: hidden;
+            color: white;
+        }
+
+        .imgCartDatailContent{
+            width: 100%;
+        }
+
+        .textCartDatail{
+            padding: 20px;
+        }
+
+        .textCartDatail p, .textCartDatail hr{
+            margin-top: 10px;
+        }
+
+        .conteinerMyBlog{
+            width: 173px;
+            background-color: #BDFF00;
+            border-radius: 14px;
+            margin: 0 auto;
+            color: #242222;
+            margin-top: 15px;
+        }
+
+        .conteinerMyBlog a{
+            text-decoration: none;
+        }
+
+        .btnMyBlog{
+            padding: 3px 0;
+            border-radius: 14px;
+            text-align: center;
+        }
+
         .footer{
             width: 100%;
             display: flex;
@@ -507,6 +622,11 @@
                 <div class="shop_nav">
                     <a href="{% url 'shop' %}">
                         Магазин
+                    </a>
+                </div>
+                <div class="blog_nav">
+                    <a href="{% url 'blog' %}">
+                        Блог
                     </a>
                 </div>
             </div>

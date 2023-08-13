@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="content">
+        <div class="conteinerBlogDatail">
+            <div class="cartBlogDatail">
+                <div class="imgCartDatail">
+                    {% if article.image %}
+                        <img src="{{article.image.url}}" alt="{{article.title}}" class="imgCartDatailContent">
+                    {% endif %}
+                </div>
+                <div class="textCartDatail">
+                    <h1>{{article.title}}</h1>
+                    <p>Автор: {{article.author.username }}</p>
+                    <p>Дата публикації: {{article.created_at}}</p>
+                    <p>Дата оновлення: {{article.updated_at}}</p>
+                    <p>Теги: {% for tag in article.tags.all %}
+                        #{{tag.name}}
+                        {% endfor %}
+                    </p>
+                    <p>Категорія: {{article.category.name}} </p>
+                    <hr>
+                    <p>{{article.content|safe}}</p>
+                </div>
+            </div>
+            <div class="commentBlock">
+                <form method="post">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <input class="btnInBag" type="submit" value="Додати коментар">
+                </form>
+            
+                {% for comment in article.comments.all %}
+                    <div class="coment">
+                        <p>{{comment.content}}</p>
+                        <p><strong>Ім'я:</strong> {{comment.name}}</p>
+                        <p><strong>Дата публикації:</strong> {{comment.created_at}}</p>
+                    </div>
+                {% empty %}
+                    <p>Коментарів немає</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    
+
+{% endblock %}

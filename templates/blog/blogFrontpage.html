@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block content %}
+        <div class="content">
+            <div class="blogconteiner">
+                <div class="contentBlog">
+                    {% for article in articles %}
+                        <div class="cartBlog">
+                            <div class="imgCartBlog">
+                                <img src="{{article.image.url}}">
+                            </div>
+                            <div class="textCartBlog">
+                                <div class="textCartBlogHeader">
+                                    {{article.title}}
+                                </div>
+                                <div class="textCartBlogContent">
+                                    {{article.content_preview}}
+                                </div>
+                                <div class="authorBlog">
+                                    Автор: {{article.author}}
+                                </div>
+                                <div class="textCartBlogBtn">
+                                    {% if user.is_authenticated and user == article.author %}
+                                        <div class="moreCRUD">
+                                            <a href="{% url 'update_blog' article.slug %}" class="uppdate">
+                                                <div class="uppdateBlock">
+                                                    Оновити
+                                                </div>
+                                            </a>
+                                            <a href="{% url 'details_blog' article.slug %}" class="datail">
+                                                <div class="datailBlock">
+                                                    Детальніше 
+                                                </div>
+                                            </a>
+                                            <a href="{% url 'delete_blog' article.slug %}" class="delete">
+                                                <div class="deleteBlock">
+                                                    Видалити
+                                                </div>
+                                            </a>
+                                        </div>
+                                    {% else %}
+                                        <a href="{% url 'details_blog' article.slug %}" class="datail">
+                                            <div class="btnDatail">
+                                                Детальніше 
+                                            </div>
+                                        </a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="searchBlock">
+                    <div class="searchContent">
+                        <div class="searchContentHeader">
+                            Пошук
+                        </div>
+                        <div class="searchContentBody">
+                            <form role="search" method="get" action="{% url 'search_blog' %}">
+                                <input type="search" id="autocomplete"  placeholder="Search..." class="inputSearch" aria-label="Search" name='query'>
+                            </form>
+                            <a href="{% url 'create_blog' %}">
+                                <div class="btnCreate">
+                                    Створити
+                                </div>
+                            </a>
+                        </div>
+                        <div class="conteinerMyBlog">
+                            <a href="{% url 'my_blog' %}">
+                                <div class="btnMyBlog">
+                                    Мої статті
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}
