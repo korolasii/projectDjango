@@ -68,6 +68,7 @@ class OrderCreateView(LoginRequiredMixin, View):
         return render(request,'order/order_create.html',{'form': form,'cart': cart,'error': error})
             
     def post(self, request):
+        
         user = request.user
         cart = get_cart_data(user.id)
         
@@ -91,6 +92,8 @@ class OrderCreateView(LoginRequiredMixin, View):
                     Games.objects.filter(id=row.product.id).update(quantity=row.product.quantity - quantity)
                 Cart.objects.filter(user=user.id).delete()
             return render(request,'order/order_created.html',{'order': order,})   
+        else:
+            print(form.errors)
         return render(request,'order/order_create.html',{'form': form,'cart': cart,})
     
 
