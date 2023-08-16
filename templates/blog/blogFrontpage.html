@@ -59,19 +59,23 @@
                             <form role="search" method="get" action="{% url 'search_blog' %}">
                                 <input type="search" id="autocomplete"  placeholder="Search..." class="inputSearch" aria-label="Search" name='query'>
                             </form>
-                            <a href="{% url 'create_blog' %}">
-                                <div class="btnCreate">
-                                    Створити
-                                </div>
-                            </a>
+                            {% if user.is_authenticated%}
+                                <a href="{% url 'create_blog' %}">
+                                    <div class="btnCreate">
+                                        Створити
+                                    </div>
+                                </a>
+                            {% endif %}
                         </div>
-                        <div class="conteinerMyBlog">
-                            <a href="{% url 'my_blog' %}">
-                                <div class="btnMyBlog">
-                                    Мої статті
-                                </div>
-                            </a>
-                        </div>
+                        {% if user.is_authenticated%}
+                            <div class="conteinerMyBlog">
+                                <a href="{% url 'my_blog' %}">
+                                    <div class="btnMyBlog">
+                                        Мої статті
+                                    </div>
+                                </a>
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>

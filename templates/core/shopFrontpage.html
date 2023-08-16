@@ -71,11 +71,13 @@
                         <form role="search" method="get" action="{% url 'search' %}">
                             <input type="search" id="autocomplete"  placeholder="Search..." class="inputSearch" aria-label="Search" name='query'>
                         </form>
-                        <a href="{% url 'create' %}">
-                            <div class="btnCreate">
-                                Створити
-                            </div>
-                        </a>
+                        {% if user.is_authenticated%}
+                            <a href="{% url 'create' %}">
+                                <div class="btnCreate">
+                                    Створити
+                                </div>
+                            </a>
+                        {% endif %}
                     </div>
                 </div>
             </div>

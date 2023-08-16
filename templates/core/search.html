@@ -33,9 +33,31 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="btnDatail">
-                                Детальніше 
-                            </div>
+                            {% if user.is_authenticated and user == product.author %}
+                                <div class="moreCRUD">
+                                    <a href="{% url 'product_update' product.slug %}" class="uppdate">
+                                        <div class="uppdateBlock">
+                                            Оновити
+                                        </div>
+                                    </a>
+                                    <a href="{% url 'details' product.slug %}" class="datail">
+                                        <div class="datailBlock">
+                                            Детальніше 
+                                        </div>
+                                    </a>
+                                    <a href="{% url 'product_delete' product.slug %}" class="delete">
+                                        <div class="deleteBlock">
+                                            Видалити
+                                        </div>
+                                    </a>
+                                </div>
+                            {% else %}
+                                <a href="{% url 'details' product.slug %}" class="datail">
+                                    <div class="btnDatail">
+                                        Детальніше 
+                                    </div>
+                                </a>
+                            {% endif %}
                         </div>
                     </div>
                 {% endfor %}
