@@ -1,34 +1,34 @@
 {% load mathfilters %}
-<table class="table">
+<table class="tableOrderContent">
     <thead>
     <tr>
-        <th scope="col">Фото</th>
-        <th scope="col">Товар</th>
-        <th scope="col">Количество</th>
-        <th scope="col">Цена</th>
-        <th scope="col">Сума</th>
-        <th scope="col">Удалить</th>
+        <th>Товар</th>
+        <th>Количество</th>
+        <th>Цена</th>
+        <th>Удалить</th>
     </tr>
     </thead>
     <tbody>
     {% for row in cart.cart %}
         <tr>
-            {% comment %} <td><a href=""><img class="img-thumbnail" width="70"
-                                                                     src="{{ row.product.main_image.image_thumbnail.url }}"
-                                                                     alt=""></a></td>
-            <td><a href="{% url 'product' pk=row.product.id %}">{{ row.product.name }}</a></td> {% endcomment %}
-            <td>{{ row.quantity }}</td>
-            <td>{{ row.product.price }}</td>
-            <td>{{ row.product.price|mul:row.quantity }} грн.</td>
             <td>
-                {% comment %} <a href="{% url 'delete_from_cart' pk=row.product.id %}" class="btn btn-danger"><i
-                        class="fa fa-trash"></i></a> {% endcomment %}
+                {{ row.product }}
+            </td> 
+            <td>{{ row.quantity }} шт.</td>
+            <td>{{ row.product.price }} грн.</td>
+            <td>
+                <div class="btnDeleteOrder">
+                    <a href="{% url 'delete_from_cart' pk=row.product.id %}" class="btn btn-danger">
+                        Удалить
+                    </a>
+                </div>
             </td>
         </tr>
     {% endfor %}
     <tr>
-        <td colspan="4" class="text-end"><b>Итого:</b></td>
-        <td colspan="2">{{ cart.total }} грн.</td>
+        <td><b>Итого:</b></td>
+        <td></td>
+        <td>{{ cart.total }} грн.</td>
     </tr>
     </tbody>
 </table>

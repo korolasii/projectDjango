@@ -77,7 +77,6 @@ class OrderCreateView(LoginRequiredMixin, View):
         data.update(paid=False)
         request.POST = data
         form = OrderCreateForm(request.POST)
-        print(request.POST)
         if form.is_valid():
             order = form.save()
             with transaction.atomic():
@@ -91,10 +90,7 @@ class OrderCreateView(LoginRequiredMixin, View):
                     )
                     Games.objects.filter(id=row.product.id).update(quantity=row.product.quantity - quantity)
                 Cart.objects.filter(user=user.id).delete()
-            return render(request,'order/order_created.html',{'order': order,})
-        else:
-            messages.error(request, 'Помилка оформлення замовлення', extra_tags='danger')
-              
+            return render(request,'order/order_created.html',{'order': order,})   
         return render(request,'order/order_create.html',{'form': form,'cart': cart,})
     
 

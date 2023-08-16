@@ -240,7 +240,7 @@
             justify-content: center;
             align-items: center;
             border-radius: 14px;
-            padding: 10px 0;
+            padding: 15px 0;
             cursor: pointer;
         }
 
@@ -296,7 +296,7 @@
             color: #242222;
             width: 173px;
             margin-top: 15px;
-            padding: 3px 0;
+            padding: 8px 0;
             border-radius: 14px;
             text-align: center;
             cursor: pointer;
@@ -334,7 +334,7 @@
         }
 
         .btnReq{
-            padding: 5px;
+            padding: 10px;
             background-color: #BDFF00;
             width: 100px;
         }
@@ -395,7 +395,7 @@
             justify-content: center;
             align-items: center;
             border-radius: 14px;
-            padding: 5px 0 5px 0;
+            padding: 10px 0 10px 0;
         }
 
         .btnUpdate, .btnLogout{
@@ -452,7 +452,7 @@
 
         .btnInBag{
             border-radius: 14px;
-            padding: 3px;
+            padding: 3px 10px 3px 10px;
             margin-left: 0;
             background-color: #BDFF00;
         }
@@ -587,9 +587,93 @@
         }
 
         .btnMyBlog{
-            padding: 3px 0;
+            padding: 8px 0;
             border-radius: 14px;
             text-align: center;
+        }
+
+        .orderConteiner{
+            font-size: 20px;
+            width: 60%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            background-color: #242222;
+            padding: 20px;
+            border-radius: 14px;
+            color: white;
+        }
+
+        .tableOrderContent{
+            width: 100%;
+        }
+
+        td{
+            text-align: center;
+            padding: 10px 0 0 0;
+        }
+
+        td a{
+            color:#242222;
+            text-decoration: none;
+        }
+
+        .btnDeleteOrder{
+            background-color: #BDFF00;
+            border-radius: 14px;
+            padding: 4px;
+        }
+
+        .otherContent{
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .createOrderBtn, .backToSaleBtn{
+            background-color: #BDFF00;
+            border-radius: 14px;
+            padding: 10px;
+        }
+
+        .createOrderBtn a, .backToSaleBtn a{
+            color: #242222;
+            text-decoration: none;
+        }
+
+        .orderCreateToSend{
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 70%;
+        }
+        
+        .orderCreateToSendBag{
+            width: 55%;
+            background-color: #242222;
+            border-radius: 14px;
+            color: white;
+            padding: 20px;
+        }
+
+        h3{
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .orderCreateToSendFrom{
+            width: 40%;
+            background-color: #242222;
+            border-radius: 14px;
+            color: white;
+            padding: 20px;
+        }
+
+        .btnSendOrder{
+            background-color: #BDFF00;
+            border-radius: 14px;
+            padding: 5px;
         }
 
         .footer{
@@ -632,6 +716,11 @@
             </div>
             <div class="blog">
                 {% if user.is_authenticated %}
+                    <div class="shop_bag">
+                        <a href="{% url 'cart' %}">
+                            <img src="{% static 'media/shoppingBagWhite.png' %}" class="shop_bag_img">
+                        </a>
+                    </div>
                     <div class="name">
                         {{user.username}}
                     </div>

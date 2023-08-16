@@ -15,6 +15,7 @@ def details(request, slug):
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
+            comment.name = request.user.username
             comment.article = product
             comment.save()
             return  redirect('details', slug=slug)

@@ -1,21 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-<div class="row my-2 gap-3">
-
-    <div class="col bg-body-tertiary rounded-3 p-4">
-
+    <div class="content">
         <h3 class = "mb-4">Дякуємо за замовлення!</h3>
         <p>Ваше замовлення успішно оформлено.</p>
         <p>Наш менеджер зв'яжеться з вами найближчим часом.</p>
-        <p>Ваше замовлення <h3><b>№{{ order.id }}</b>.</h3></p>
+        <p>Ваше замовлення <h3><b>№{{ order }}</b>.</h3></p>
         <p>На вашу електронну пошту відправлено лист з інформацією про замовлення.</p>
-
-       
-        
     </div>
-
-</div>
 
 {% endblock %}

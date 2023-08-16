@@ -2,22 +2,21 @@
 
 
 {% block content %}
-
-<div class="row my-2 gap-3">
-    {% comment %} {% include 'catalog/blocks/_list_category.html' %} {% endcomment %}
-
-    <div class="col bg-body-tertiary rounded-3 p-4">
-
-        <h3 class = "mb-4">Кошик</h3>
-
-        {% include 'order/blocks/_cart.html' %}
-        <hr class="my-4">
-        <div class="d-flex justify-content-between">
-            {% comment %} <a href="{% url 'catalog' %}" class="btn btn-outline-primary">Продовжити покупки</a> {% endcomment %}
-            <a href="{% url 'create_order' %}" class="btn btn-primary">Оформити замовлення</a>
+    <div class="content">
+        <div class="orderConteiner">
+            <div class="tableOrder">
+                {% include 'order/blocks/_cart.html' %}
+            </div>
+            <div class="otherContent">
+                <div class="createOrderBtn">
+                    <a href="{% url 'create_order' %}" class="createOrderBtnContent">Оформити замовлення</a>
+                </div>
+                <div class="backToSaleBtn">
+                    <a href="{% url 'shop' %}" class="backToSaleBtnContent">Продовжити покупки</a>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 
 {% endblock %}
 

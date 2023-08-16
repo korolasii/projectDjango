@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'apps.blog.apps.BlogConfig',
     'apps.order.apps.OrderConfig',
     'ckeditor',
+    'mathfilters',
 ]
 
 MIDDLEWARE = [
@@ -87,6 +88,8 @@ DATABASES = {
         'PASSWORD': '8642',
         'HOST': 'localhost',
         'PORT': '5432'
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 

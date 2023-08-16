@@ -33,12 +33,12 @@
                         </div>
                         {% if product.quantity %}
                             {% if user.is_authenticated %}
-                                <form action="" method="get">
+                                <form action="{% url 'add_to_cart' %}"  method="get">
                                     <input type="hidden" name="product" value="{{ product.id }}">
                                     <div class="input-group mb-3">
                                         <input type="number" min="1" step="1" max="{{ product.quantity }}" value="1" class="quantityInput" name="quantity">
                                         <button class="btnInBag" type="submit" id="button-addon1"> 
-                                            Купити
+                                            Додати до кошика
                                         </button>
                                     </div>
                                 </form>

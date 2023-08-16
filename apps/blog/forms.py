@@ -5,7 +5,7 @@ from .models import *
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
-        fields = ('name', 'email', 'content')
+        fields = ('content',)
         
 class ArticleForm(forms.ModelForm):
     tags_input = forms.CharField(label='Теги', required=False)
